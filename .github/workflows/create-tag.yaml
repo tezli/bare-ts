@@ -1,0 +1,36 @@
+name: Create Tag
+ 
+on:
+  workflow_dispatch:
+    inputs:
+      type:
+        required: true
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
+
+jobs:
+  tag:
+    name: tag
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v6
+
+      - name: setup node
+        uses: actions/setup-node@v6
+        with:
+          node-version: "25.1"
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: npm version
+        run: |
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.name "GitHub Action[bot]"
+          npm version ${{ inputs.type }}
+          git push && git push --tags
+          # creating release if required
+          # publish npm package if required

@@ -1,0 +1,99 @@
+name: Continuous Integration
+
+permissions:
+  contents: read
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  lint:
+    name: npm lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v6
+
+      - name: setup node
+        uses: actions/setup-node@v6
+        with:
+          node-version: "25.1"
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: installing
+        run: |
+          npm i
+
+      - name: linting
+        run: npm run lint
+ 
+  audit:
+    name: npm audit
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v6
+
+      - name: setup node
+        uses: actions/setup-node@v6
+        with:
+          node-version: "25.1"
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: installing
+        run: |
+          npm i
+          
+      - name: auditing
+        run: npm audit
+ 
+  test:
+    name: npm test
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v6
+
+      - name: setup node
+        uses: actions/setup-node@v6
+        with:
+          node-version: "25.1"
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: installing
+        run: |
+          npm i
+
+      - name: testing
+        run: npm t
+    needs: [lint, audit]
+ 
+ 
+  build:
+    name: npm build
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v6
+
+      - name: setup node
+        uses: actions/setup-node@v6
+        with:
+          node-version: "25.1"
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: installing
+        run: |
+          npm i
+
+      - name: building
+        run: npm run build:prod
+    needs: [test]
+ 

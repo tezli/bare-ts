@@ -1,0 +1,26 @@
+name: Create Release
+
+on:
+  workflow_dispatch:
+  pull_request:
+    tags:
+      - v\d+\.\d\.\d
+
+jobs:
+  release:
+    name: release
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v6
+
+      - name: setup node
+        uses: actions/setup-node@v6
+        with:
+          node-version: "25.1"
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: npm release
+        run: |
+          echo "this would be an npm release"
