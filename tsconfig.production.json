@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "allowJs": false,
+    "target": "ESNext",
+    "skipLibCheck": true,
+    "declaration": true,
+    "strict": true,
+    "pretty": false,
+    "removeComments": true,
+    "esModuleInterop": true,
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "resolveJsonModule": false,
+    "outDir": "./build"
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
