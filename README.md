@@ -1,4 +1,4 @@
 # Bare TypeScript Project
-[![build](https://github.com/tezli/ts/actions/workflows/ci.yaml/badge.svg)](https://github.com/tezli/ts/actions/workflows/ci.yaml)
+[![Continuous Integration](https://github.com/tezli/bare-ts/actions/workflows/continuous-integration.yaml/badge.svg)](https://github.com/tezli/bare-ts/actions/workflows/continuous-integration.yaml)
 
 A basic, bare TypeScript project to not reinvent the wheel each and every time.
