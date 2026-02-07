@@ -1,9 +1,5 @@
-import { WithName } from './types'
+import { Main } from './main'
 
-export class Main implements WithName {
-    constructor(private _name: string) { }
-
-    get name(): string {
-        return this._name
-    }
-}
+const name = 'name'
+const main = new Main(name)
+console.log(name === main.getName())
