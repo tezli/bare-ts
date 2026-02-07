@@ -1,9 +1,9 @@
 import { WithName } from './types'
 
 export class Main implements WithName {
-    constructor(private readonly name: string) { }
+    constructor(private readonly _name: string) { }
 
-    getName(): string {
-        return this.name
+    get name(): string {
+        return this._name
     }
 }
