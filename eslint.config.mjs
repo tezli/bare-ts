@@ -11,6 +11,7 @@ export default defineConfig(
             '@stylistic': stylistic
         },
         rules: {
+            // '@/no-console': ['error'],
             '@stylistic/semi': ['error', 'never'],
             '@stylistic/indent': ['error', 4]
         }
