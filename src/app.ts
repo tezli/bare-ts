@@ -1,6 +1,6 @@
 import { WithName } from './types'
 
-export class Main implements WithName {
+export class App implements WithName {
     constructor(private readonly _name: string) { }
 
     get name(): string {

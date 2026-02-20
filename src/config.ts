@@ -1,7 +1,7 @@
 import dotenv from 'dotenv'
 
 interface EnvVars {
-    [key: string]: string | undefined;
+    [key: string]: string | undefined
 }
 
 export const ENVIRONMENT = {
